@@ -15,7 +15,8 @@ exports.login = async (req, res) => {
         const connection = await pool.getConnection();
         try {
             const [rows] = await connection.query(
-                "SELECT * FROM USERS WHERE username = ?",
+                // "SELECT * FROM USERS WHERE username = ?",
+                "SELECT * FROM users WHERE username = ?",
                 [username]
             );
 
