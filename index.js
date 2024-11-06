@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config({path: ".env.local"});
 
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -17,12 +18,20 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 const corsOptions = {
     origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps or Postman) or allow any origin
-        if (!origin) return callback(null, true);
-        return callback(null, true); // Allow all origins
+        const allowedOrigins = [
+            process.env.FRONTENDURL, // Your Vercel frontend URL
+            'http://localhost:3000', // Localhost for development
+        ];
+        
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
     },
-    credentials: true, // Enable cookies to be sent with requests
+    credentials: true,
 };
+
 
 // Apply CORS middleware to all routes
 app.use(cors(corsOptions));
