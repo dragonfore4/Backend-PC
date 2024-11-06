@@ -10,7 +10,7 @@ require("dotenv").config({path: ".env.local"});
 // })
 
 const pool = mysql.createPool({
-    host : "localhost",
+    host : "127.0.0.1",
     user : "root",
     password : "1234",
     database : process.env.DB_NAME
