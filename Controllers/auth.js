@@ -37,11 +37,12 @@ exports.login = async (req, res) => {
 
             // Set the JWT as a cookie
             res.cookie("token", token, {
-                httpOnly: false,
-                secure: false, // Ensure this is false for local development (no HTTPS on localhost)
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production', // true in production, false locally
                 sameSite: "strict",
                 maxAge: 4 * 60 * 60 * 1000, // 4 hours
             });
+            
 
             console.log("Cookie set:", token); // Log to check if cookie is set on server
 
