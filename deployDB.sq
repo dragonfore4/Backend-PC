@@ -1,0 +1,344 @@
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+--
+-- Host: localhost    Database: carbon_credit_db
+-- ------------------------------------------------------
+-- Server version	8.0.38
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `carboncredits`
+--
+
+DROP TABLE IF EXISTS `carboncredits`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `carboncredits` (
+  `carbon_credit_id` int NOT NULL AUTO_INCREMENT,
+  `transaction_id` int DEFAULT NULL,
+  `credit_start_date` date NOT NULL,
+  `credit_end_date` date NOT NULL,
+  `credit_amount` decimal(10,2) DEFAULT NULL,
+  `project_id` int NOT NULL,
+  PRIMARY KEY (`carbon_credit_id`),
+  KEY `project_id` (`project_id`),
+  KEY `transaction_id` (`transaction_id`),
+  CONSTRAINT `carboncredits_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `carboncredits_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `carboncredits`
+--
+
+LOCK TABLES `carboncredits` WRITE;
+/*!40000 ALTER TABLE `carboncredits` DISABLE KEYS */;
+INSERT INTO `carboncredits` VALUES (1,13,'2024-10-15','2025-10-15',150.00,3),(2,13,'2025-10-15','2026-10-15',110.00,3),(3,13,'2026-10-15','2027-10-15',NULL,3),(4,11,'2024-10-15','2025-10-15',10.00,4),(5,11,'2025-10-15','2026-10-15',NULL,4),(6,11,'2026-10-15','2027-10-15',NULL,4),(7,9,'2024-10-15','2025-10-15',NULL,5),(8,9,'2025-10-15','2026-10-15',NULL,5),(9,9,'2026-10-15','2027-10-15',NULL,5),(10,11,'2024-10-13','2025-10-13',NULL,6),(11,11,'2025-10-13','2026-10-13',NULL,6),(12,11,'2026-10-13','2027-10-13',NULL,6),(13,12,'2024-10-26','2025-10-26',NULL,7),(14,12,'2025-10-26','2026-10-26',NULL,7),(15,12,'2026-10-26','2027-10-26',NULL,7),(16,14,'2022-03-05','2023-03-05',123.00,8),(17,14,'2023-03-05','2024-03-05',220.00,8),(18,14,'2024-03-05','2025-03-05',NULL,8),(19,14,'2025-03-05','2026-03-05',NULL,8),(20,14,'2026-03-05','2027-03-05',NULL,8),(21,NULL,'2023-01-10','2024-01-10',218.00,9),(22,NULL,'2024-01-10','2025-01-10',NULL,9),(23,NULL,'2025-01-10','2026-01-10',NULL,9),(24,NULL,'2026-01-10','2027-01-10',NULL,9),(25,NULL,'2027-01-10','2028-01-10',NULL,9),(26,NULL,'2022-04-01','2023-04-01',129.00,10),(27,NULL,'2023-04-01','2024-04-01',112.00,10),(28,NULL,'2024-04-01','2025-04-01',NULL,10),(29,NULL,'2025-04-01','2026-04-01',NULL,10),(30,NULL,'2026-04-01','2027-04-01',NULL,10),(31,NULL,'2027-04-01','2028-04-01',NULL,10),(32,NULL,'2028-04-01','2029-04-01',NULL,10),(33,NULL,'2022-02-20','2023-02-20',295.00,11),(34,NULL,'2023-02-20','2024-02-20',204.00,11),(35,NULL,'2024-02-20','2025-02-20',NULL,11),(36,NULL,'2025-02-20','2026-02-20',NULL,11),(37,NULL,'2026-02-20','2027-02-20',NULL,11),(38,NULL,'2027-02-20','2028-02-20',NULL,11),(39,NULL,'2023-05-15','2024-05-15',258.00,12),(40,NULL,'2024-05-15','2025-05-15',NULL,12),(41,NULL,'2025-05-15','2026-05-15',NULL,12),(42,NULL,'2026-05-15','2027-05-15',NULL,12),(43,NULL,'2027-05-15','2028-05-15',NULL,12),(44,NULL,'2021-07-02','2022-07-02',168.00,13),(45,NULL,'2022-07-02','2023-07-02',188.00,13),(46,NULL,'2023-07-02','2024-07-02',134.00,13),(47,NULL,'2024-07-02','2025-07-02',NULL,13),(48,NULL,'2025-07-02','2026-07-02',NULL,13),(49,NULL,'2022-08-18','2023-08-18',226.00,14),(50,NULL,'2023-08-18','2024-08-18',217.00,14),(51,NULL,'2024-08-18','2025-08-18',NULL,14),(52,NULL,'2025-08-18','2026-08-18',NULL,14),(53,NULL,'2026-08-18','2027-08-18',NULL,14),(54,NULL,'2023-06-12','2024-06-12',109.00,15),(55,NULL,'2024-06-12','2025-06-12',NULL,15),(56,NULL,'2025-06-12','2026-06-12',NULL,15),(57,NULL,'2026-06-12','2027-06-12',NULL,15),(58,NULL,'2027-06-12','2028-06-12',NULL,15),(59,NULL,'2022-09-05','2023-09-05',224.00,16),(60,NULL,'2023-09-05','2024-09-05',284.00,16),(61,NULL,'2024-09-05','2025-09-05',NULL,16),(62,NULL,'2025-09-05','2026-09-05',NULL,16),(63,NULL,'2026-09-05','2027-09-05',NULL,16),(64,NULL,'2027-09-05','2028-09-05',NULL,16),(65,NULL,'2028-09-05','2029-09-05',NULL,16),(66,NULL,'2023-01-20','2024-01-20',233.00,17),(67,NULL,'2024-01-20','2025-01-20',NULL,17),(68,NULL,'2025-01-20','2026-01-20',NULL,17),(69,NULL,'2026-01-20','2027-01-20',NULL,17),(70,NULL,'2027-01-20','2028-01-20',NULL,17),(71,NULL,'2028-01-20','2029-01-20',NULL,17),(72,NULL,'2029-01-20','2030-01-20',NULL,17),(73,NULL,'2023-04-08','2024-04-08',226.00,18),(74,NULL,'2024-04-08','2025-04-08',NULL,18),(75,NULL,'2025-04-08','2026-04-08',NULL,18),(76,NULL,'2026-04-08','2027-04-08',NULL,18),(77,NULL,'2027-04-08','2028-04-08',NULL,18),(78,NULL,'2022-03-13','2023-03-13',129.00,19),(79,NULL,'2023-03-13','2024-03-13',91.00,19),(80,NULL,'2024-03-13','2025-03-13',NULL,19),(81,NULL,'2025-03-13','2026-03-13',NULL,19),(82,NULL,'2026-03-13','2027-03-13',NULL,19),(83,NULL,'2021-08-07','2022-08-07',187.00,20),(84,NULL,'2022-08-07','2023-08-07',153.00,20),(85,NULL,'2023-08-07','2024-08-07',115.00,20),(86,NULL,'2024-08-07','2025-08-07',NULL,20),(87,NULL,'2025-08-07','2026-08-07',NULL,20),(88,NULL,'2023-11-02','2024-11-02',NULL,21),(89,NULL,'2024-11-02','2025-11-02',NULL,21),(90,NULL,'2025-11-02','2026-11-02',NULL,21),(91,NULL,'2026-11-02','2027-11-02',NULL,21),(92,NULL,'2027-11-02','2028-11-02',NULL,21),(93,NULL,'2022-05-14','2023-05-14',237.00,22),(94,NULL,'2023-05-14','2024-05-14',118.00,22),(95,NULL,'2024-05-14','2025-05-14',NULL,22),(96,NULL,'2025-05-14','2026-05-14',NULL,22),(97,NULL,'2026-05-14','2027-05-14',NULL,22),(98,NULL,'2022-06-01','2023-06-01',211.00,23),(99,NULL,'2023-06-01','2024-06-01',190.00,23),(100,NULL,'2024-06-01','2025-06-01',NULL,23),(101,NULL,'2025-06-01','2026-06-01',NULL,23),(102,NULL,'2026-06-01','2027-06-01',NULL,23),(103,NULL,'2023-03-10','2024-03-10',227.00,24),(104,NULL,'2024-03-10','2025-03-10',NULL,24),(105,NULL,'2025-03-10','2026-03-10',NULL,24),(106,NULL,'2026-03-10','2027-03-10',NULL,24),(107,NULL,'2027-03-10','2028-03-10',NULL,24),(108,NULL,'2022-11-01','2023-11-01',266.00,25),(109,NULL,'2023-11-01','2024-11-01',NULL,25),(110,NULL,'2024-11-01','2025-11-01',NULL,25),(111,NULL,'2025-11-01','2026-11-01',NULL,25),(112,NULL,'2026-11-01','2027-11-01',NULL,25),(113,NULL,'2023-02-20','2024-02-20',136.00,26),(114,NULL,'2024-02-20','2025-02-20',NULL,26),(115,NULL,'2025-02-20','2026-02-20',NULL,26),(116,NULL,'2026-02-20','2027-02-20',NULL,26),(117,NULL,'2027-02-20','2028-02-20',NULL,26),(118,NULL,'2022-08-15','2023-08-15',216.00,27),(119,NULL,'2023-08-15','2024-08-15',158.00,27),(120,NULL,'2024-08-15','2025-08-15',NULL,27),(121,NULL,'2025-08-15','2026-08-15',NULL,27),(122,NULL,'2026-08-15','2027-08-15',NULL,27),(123,NULL,'2023-01-10','2024-01-10',263.00,28),(124,NULL,'2024-01-10','2025-01-10',NULL,28),(125,NULL,'2025-01-10','2026-01-10',NULL,28),(126,NULL,'2026-01-10','2027-01-10',NULL,28),(127,NULL,'2027-01-10','2028-01-10',NULL,28),(128,NULL,'2022-04-05','2023-04-05',120.00,29),(129,NULL,'2023-04-05','2024-04-05',142.00,29),(130,NULL,'2024-04-05','2025-04-05',NULL,29),(131,NULL,'2025-04-05','2026-04-05',NULL,29),(132,NULL,'2026-04-05','2027-04-05',NULL,29),(133,NULL,'2021-06-07','2022-06-07',263.00,30),(134,NULL,'2022-06-07','2023-06-07',164.00,30),(135,NULL,'2023-06-07','2024-06-07',154.00,30),(136,NULL,'2024-06-07','2025-06-07',NULL,30),(137,NULL,'2025-06-07','2026-06-07',NULL,30),(138,NULL,'2022-12-12','2023-12-12',187.00,31),(139,NULL,'2023-12-12','2024-12-12',NULL,31),(140,NULL,'2024-12-12','2025-12-12',NULL,31),(141,NULL,'2025-12-12','2026-12-12',NULL,31),(142,NULL,'2026-12-12','2027-12-12',NULL,31),(143,NULL,'2023-05-20','2024-05-20',174.00,32),(144,NULL,'2024-05-20','2025-05-20',NULL,32),(145,NULL,'2025-05-20','2026-05-20',NULL,32),(146,NULL,'2026-05-20','2027-05-20',NULL,32),(147,NULL,'2027-05-20','2028-05-20',NULL,32),(148,NULL,'2022-03-15','2023-03-15',221.00,33),(149,NULL,'2023-03-15','2024-03-15',280.00,33),(150,NULL,'2024-03-15','2025-03-15',30.00,33),(151,NULL,'2025-03-15','2026-03-15',NULL,33),(152,NULL,'2026-03-15','2027-03-15',NULL,33),(153,NULL,'2023-04-10','2024-04-10',226.00,34),(154,NULL,'2024-04-10','2025-04-10',NULL,34),(155,NULL,'2025-04-10','2026-04-10',NULL,34),(156,NULL,'2026-04-10','2027-04-10',NULL,34),(157,NULL,'2027-04-10','2028-04-10',NULL,34),(158,NULL,'2022-02-25','2023-02-25',202.00,35),(159,NULL,'2023-02-25','2024-02-25',240.00,35),(160,NULL,'2024-02-25','2025-02-25',NULL,35),(161,NULL,'2025-02-25','2026-02-25',NULL,35),(162,NULL,'2026-02-25','2027-02-25',NULL,35),(163,NULL,'2022-08-18','2023-08-18',293.00,36),(164,NULL,'2023-08-18','2024-08-18',235.00,36),(165,NULL,'2024-08-18','2025-08-18',NULL,36),(166,NULL,'2025-08-18','2026-08-18',NULL,36),(167,NULL,'2026-08-18','2027-08-18',NULL,36),(168,NULL,'2023-09-02','2024-09-02',207.00,37),(169,NULL,'2024-09-02','2025-09-02',NULL,37),(170,NULL,'2025-09-02','2026-09-02',NULL,37),(171,NULL,'2026-09-02','2027-09-02',NULL,37),(172,NULL,'2027-09-02','2028-09-02',NULL,37),(173,13,'2024-10-31','2025-10-31',NULL,38),(174,13,'2025-10-31','2026-10-31',NULL,38),(175,13,'2026-10-31','2027-10-31',NULL,38),(176,NULL,'2024-11-02','2025-11-02',NULL,39),(177,NULL,'2025-11-02','2026-11-02',NULL,39),(178,NULL,'2026-11-02','2027-11-02',NULL,39);
+/*!40000 ALTER TABLE `carboncredits` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cart_project`
+--
+
+DROP TABLE IF EXISTS `cart_project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cart_project` (
+  `cart_project_id` int NOT NULL AUTO_INCREMENT,
+  `cart_id` int NOT NULL,
+  `project_id` int NOT NULL,
+  PRIMARY KEY (`cart_project_id`),
+  KEY `cart_id` (`cart_id`),
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `cart_project_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`) ON DELETE CASCADE,
+  CONSTRAINT `cart_project_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart_project`
+--
+
+LOCK TABLES `cart_project` WRITE;
+/*!40000 ALTER TABLE `cart_project` DISABLE KEYS */;
+INSERT INTO `cart_project` VALUES (1,1,3),(2,1,4),(3,2,4),(22,4,7),(27,7,8),(28,7,9);
+/*!40000 ALTER TABLE `cart_project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `carts`
+--
+
+DROP TABLE IF EXISTS `carts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `carts` (
+  `cart_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  PRIMARY KEY (`cart_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `carts`
+--
+
+LOCK TABLES `carts` WRITE;
+/*!40000 ALTER TABLE `carts` DISABLE KEYS */;
+INSERT INTO `carts` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,9),(9,10);
+/*!40000 ALTER TABLE `carts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `certifications`
+--
+
+DROP TABLE IF EXISTS `certifications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `certifications` (
+  `certification_id` int NOT NULL AUTO_INCREMENT,
+  `certification_name` varchar(255) NOT NULL,
+  `certification_agency` varchar(255) NOT NULL,
+  `issued_date` date NOT NULL,
+  `expiry_date` date DEFAULT NULL,
+  `project_id` int NOT NULL,
+  PRIMARY KEY (`certification_id`),
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `certifications_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `certifications`
+--
+
+LOCK TABLES `certifications` WRITE;
+/*!40000 ALTER TABLE `certifications` DISABLE KEYS */;
+INSERT INTO `certifications` VALUES (1,'Cer','Cer desc','2024-10-15','2027-10-15',3),(2,'Farm2','Farm2','2024-10-15','2027-10-15',4),(3,'Cert','Cert1','2024-10-15','2027-10-15',5),(4,'Cert2','Cert2','2024-10-13','2027-10-13',6),(5,'Test status onsell','Test status onsell','2024-10-26','2027-10-26',7),(6,'ใบรับรองการดักจับคาร์บอนในฟาร์มยางพารา','EcoCert Carbon Alliance','2022-04-15','2027-04-14',8),(7,'การปลูกต้นไม้เป็นมิตรต่อสภาพอากาศ','Thai Carbon Authority','2023-02-05','2028-02-04',9),(8,'ใบรับรองการปลูกต้นไม้เป็นกลางต่อคาร์บอน','Asia Carbon Management Group','2022-05-01','2029-05-01',10),(9,'ใบรับรองฟาร์มปลูกยางแบบยั่งยืน','Thai Green Carbon Institute','2022-02-25','2028-02-24',11),(10,'คาร์บอนเครดิตฟาร์มยางยั่งยืน','CarbonCert Thailand','2023-05-20','2028-05-19',12),(11,'ใบรับรองการปลูกยางเป็นกลางต่อคาร์บอน','EcoSustain Global','2021-07-10','2026-07-09',13),(12,'ใบรับรองคาร์บอนเป็นกลาง','GreenCarbon Certification Ltd','2022-08-22','2027-08-21',14),(13,'การปลูกยางพาราแบบลดคาร์บอน','GreenWorld Certification','2023-06-15','2028-06-14',15),(14,'ใบรับรองฟาร์มคาร์บอนที่ยั่งยืน','Eco-Certified Carbon Trust','2022-09-10','2029-09-09',16),(15,'ใบรับรองการปลูกยางพาราแบบคาร์บอนต่ำ','Thai Green Council','2023-01-25','2030-01-24',17),(16,'ใบรับรองการดักจับคาร์บอนยางพารา','CarbonImpact Certification','2023-04-15','2028-04-14',18),(17,'ใบรับรองการปลูกยางแบบคาร์บอนต่ำ','EarthNet Certification','2022-03-20','2027-03-19',19),(18,'ใบรับรองฟาร์มยางคาร์บอนต่ำ','Thai EcoCarbon','2021-08-12','2026-08-11',20),(19,'ใบรับรองฟาร์มยางพาราคาร์บอน','CarbonGreen Certification Agency','2023-11-08','2028-11-07',21),(20,'ใบรับรองการปลูกยางแบบยั่งยืน','CarbonImpact Thailand','2022-05-18','2027-05-17',22),(21,'ใบรับรองคาร์บอนออฟเซ็ตปาล์มน้ำมัน','Carbon Certification Council','2022-06-15','2027-06-14',23),(22,'การปลูกปาล์มน้ำมันแบบยั่งยืน','EcoPalm Certification Group','2023-03-20','2028-03-19',24),(23,'ใบรับรองการปลูกปาล์มคาร์บอนต่ำ','CarbonNeutral Agency','2022-11-05','2027-11-04',25),(24,'ใบรับรองคาร์บอนต่ำ','CarbonGreen Certification Ltd.','2023-02-25','2028-02-24',26),(25,'การปลูกปาล์มที่ยั่งยืน','Thai Carbon Management','2022-08-20','2027-08-19',27),(26,'ใบรับรองการปลูกปาล์มแบบยั่งยืน','Global Carbon Standards Association','2023-01-15','2028-01-14',28),(27,'ใบรับรองปาล์มน้ำมันคาร์บอน','Thai Carbon Trust','2022-04-10','2027-04-09',29),(28,'คาร์บอนเป็นกลางปาล์มน้ำมัน','CarbonTrust Asia','2021-06-10','2026-06-09',30),(29,'ใบรับรองการปลูกปาล์มน้ำมันแบบคาร์บอนต่ำ','Eco-Certified Carbon Trust','2022-12-15','2027-12-14',31),(30,'ใบรับรองสวนปาล์มคาร์บอนเป็นกลาง','Future Carbon Solutions','2023-05-25','2028-05-24',32),(31,'ใบรับรองการปลูกปาล์มแบบยั่งยืน','GreenPalm Certification Group','2022-03-20','2027-03-19',33),(32,'ใบรับรองคาร์บอนต่ำในปาล์มน้ำมัน','PureCarbon Certification','2023-04-15','2028-04-14',34),(33,'ใบรับรองฟาร์มปาล์มคาร์บอน','EcoWorld Certification Ltd.','2022-03-01','2027-02-28',35),(34,'ใบรับรองคาร์บอนปาล์มน้ำมันไทย','Thai Carbon Alliance','2022-08-20','2027-08-19',36),(35,'ใบรับรองปาล์มน้ำมันแบบยั่งยืน','Green Earth Carbon Institute','2023-09-05','2028-09-04',37),(36,'ISO991','Ceragen','2024-10-31','2027-10-31',38),(37,'test','test','2024-11-02','2027-11-01',39);
+/*!40000 ALTER TABLE `certifications` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `project_images`
+--
+
+DROP TABLE IF EXISTS `project_images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `project_images` (
+  `image_id` int NOT NULL AUTO_INCREMENT,
+  `project_id` int NOT NULL,
+  `image1` varchar(255) DEFAULT 'noimage.jpg',
+  `image2` varchar(255) DEFAULT 'noimage.jpg',
+  `image3` varchar(255) DEFAULT 'noimage.jpg',
+  PRIMARY KEY (`image_id`),
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `project_images_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project_images`
+--
+
+LOCK TABLES `project_images` WRITE;
+/*!40000 ALTER TABLE `project_images` DISABLE KEYS */;
+INSERT INTO `project_images` VALUES (1,3,'Project picture-1728925839684-347070690farm1.jpg','Project picture-1728925839685-370352892farm2.jpg','Project picture-1728925839686-653701500farm3.jpg'),(2,4,'Project picture-1728927862202-576770217farm3.jpg','Project picture-1728927862202-79152843farm2.jpg','Project picture-1728927862205-732708005farm1.jpg'),(3,5,'Project picture-1728975857101-204059161farm3.jpg','Project picture-1728975857102-645806102farm2.jpg','Project picture-1728975857105-792709989farm1.jpg'),(4,6,'Project picture-1728975922907-36741066farm3.jpg','Project picture-1728975922907-839381705farm2.jpg','Project picture-1728975922908-834298735farm1.jpg'),(5,7,'Project picture-1729935420865-701920552Poster-0870.png','Project picture-1729935420868-951232798image.jpg','Project picture-1729935420871-951223815pngtree-cartoon-leaf-illustration-vector-png-image_6644591-removebg-preview.png'),(6,8,'Project picture-1730354946606-7591394441.jpg','Project picture-1730354946613-1730309892.jpg','Project picture-1730354946613-2450898673.jpg'),(7,9,'Project picture-1730355009276-2288088991.jpg','Project picture-1730355009281-4051305522.jpg','Project picture-1730355009282-929611083.jpg'),(8,10,'Project picture-1730355087269-636110751.jpg','Project picture-1730355087274-6824473932.jpg','Project picture-1730355087275-9293325333.jpg'),(9,11,'Project picture-1730355158533-7966061271.jpg','Project picture-1730355158536-1513621812.jpg','Project picture-1730355158537-1348898193.jpg'),(10,12,'Project picture-1730355335047-1055193091.jpg','Project picture-1730355335051-626731112.jpg','Project picture-1730355335051-5781397373.jpg'),(11,13,'Project picture-1730355404074-1115978472.jpg','Project picture-1730355404074-2415352713.jpg','Project picture-1730355404076-1923822241.jpg'),(12,14,'Project picture-1730355464686-3917707692.jpg','Project picture-1730355464687-8257227573.jpg','Project picture-1730355464688-4220226831.jpg'),(13,15,'Project picture-1730355624351-2477718002.jpg','Project picture-1730355624351-8606059033.jpg','Project picture-1730355624353-4592222681.jpg'),(14,16,'Project picture-1730355711954-7780499972.jpg','Project picture-1730355711955-199088713.jpg','Project picture-1730355711956-5088569231.jpg'),(15,17,'Project picture-1730355787090-3613627982.jpg','Project picture-1730355787090-1944646763.jpg','Project picture-1730355787092-8073595331.jpg'),(16,18,'noimage.jpg','Project picture-1730355890440-5846766732.jpg','Project picture-1730355890440-2841087671.jpg'),(17,19,'noimage.jpg','Project picture-1730355939265-8582456142.jpg','Project picture-1730355939265-8128483611.jpg'),(18,20,'noimage.jpg','Project picture-1730356018141-5846520212.jpg','Project picture-1730356018141-4189229231.jpg'),(19,21,'noimage.jpg','Project picture-1730356242383-9246668902.jpg','Project picture-1730356242824-5490262561.jpg'),(20,22,'noimage.jpg','Project picture-1730356366423-9188562092.jpg','Project picture-1730356366424-9590154371.jpg'),(21,23,'Project picture-1730356686838-1620679161jpg.jpg','Project picture-1730356686840-4875031262.jpg','Project picture-1730356686841-357847643.jpg'),(22,24,'Project picture-1730356731168-3050128501jpg.jpg','Project picture-1730356731170-7220183612.jpg','Project picture-1730356731170-6021007813.jpg'),(23,25,'Project picture-1730356836123-4023398481jpg.jpg','Project picture-1730356836126-7043112852.jpg','Project picture-1730356836126-535224523.jpg'),(24,26,'Project picture-1730356891804-3299591461jpg.jpg','Project picture-1730356891806-9790554812.jpg','Project picture-1730356891807-4321053923.jpg'),(25,27,'Project picture-1730356959117-365187661jpg.jpg','Project picture-1730356959119-8128523492.jpg','Project picture-1730356959120-8942439843.jpg'),(26,28,'Project picture-1730357009367-237668992.jpg','Project picture-1730357009367-6180579053.jpg','Project picture-1730357009368-5068805341jpg.jpg'),(27,29,'Project picture-1730357068118-1801269292.jpg','Project picture-1730357068118-8255478723.jpg','Project picture-1730357068120-1886368751jpg.jpg'),(28,30,'Project picture-1730357119855-8539547002.jpg','Project picture-1730357119855-7573243583.jpg','Project picture-1730357119857-6562833251jpg.jpg'),(29,31,'Project picture-1730357171051-5983867842.jpg','Project picture-1730357171052-4847818973.jpg','Project picture-1730357171053-8372577671jpg.jpg'),(30,32,'Project picture-1730357224099-4931918182.jpg','Project picture-1730357224099-1890044923.jpg','Project picture-1730357224100-8866719811jpg.jpg'),(31,33,'Project picture-1730357347767-4356212303.jpg','Project picture-1730357347769-9334304801jpg.jpg','Project picture-1730357347770-569924792.jpg'),(32,34,'Project picture-1730357393325-5963487003.jpg','Project picture-1730357393327-3170904851jpg.jpg','Project picture-1730357393329-3296917222.jpg'),(33,35,'Project picture-1730357435387-5352917373.jpg','Project picture-1730357435388-5710732111jpg.jpg','Project picture-1730357435392-9473287962.jpg'),(34,36,'Project picture-1730357483077-3543383153.jpg','Project picture-1730357483078-6315763041jpg.jpg','Project picture-1730357483079-9592288802.jpg'),(35,37,'Project picture-1730357524423-5843023963.jpg','Project picture-1730357524425-8368949551jpg.jpg','Project picture-1730357524427-4958842092.jpg'),(36,38,'noimage.jpg','noimage.jpg','noimage.jpg'),(37,39,'noimage.jpg','noimage.jpg','noimage.jpg');
+/*!40000 ALTER TABLE `project_images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `project_status`
+--
+
+DROP TABLE IF EXISTS `project_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `project_status` (
+  `status_id` int NOT NULL AUTO_INCREMENT,
+  `status_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project_status`
+--
+
+LOCK TABLES `project_status` WRITE;
+/*!40000 ALTER TABLE `project_status` DISABLE KEYS */;
+INSERT INTO `project_status` VALUES (1,'Pending'),(2,'Available'),(3,'Sold out');
+/*!40000 ALTER TABLE `project_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `project_types`
+--
+
+DROP TABLE IF EXISTS `project_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `project_types` (
+  `project_type_id` int NOT NULL AUTO_INCREMENT,
+  `project_type_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`project_type_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project_types`
+--
+
+LOCK TABLES `project_types` WRITE;
+/*!40000 ALTER TABLE `project_types` DISABLE KEYS */;
+INSERT INTO `project_types` VALUES (1,'Rubber Plantation'),(2,'Oil Palm Plantation'),(3,'Reforestation');
+/*!40000 ALTER TABLE `project_types` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `projects`
+--
+
+DROP TABLE IF EXISTS `projects`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `projects` (
+  `project_id` int NOT NULL AUTO_INCREMENT,
+  `project_name` varchar(255) NOT NULL,
+  `description` text,
+  `price` decimal(10,2) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `created_by` int DEFAULT NULL,
+  `project_type_id` int NOT NULL,
+  `status_id` int NOT NULL DEFAULT '1',
+  PRIMARY KEY (`project_id`),
+  KEY `project_type_id` (`project_type_id`),
+  KEY `projects_ibfk_2` (`status_id`),
+  KEY `created_by` (`created_by`),
+  CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`project_type_id`) REFERENCES `project_types` (`project_type_id`),
+  CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `project_status` (`status_id`),
+  CONSTRAINT `projects_ibfk_3` FOREIGN KEY (`created_by`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `projects`
+--
+
+LOCK TABLES `projects` WRITE;
+/*!40000 ALTER TABLE `projects` DISABLE KEYS */;
+INSERT INTO `projects` VALUES (3,'Farm Project Name','Fram Project Desciption',100.00,'2024-10-15','2027-10-15',4,1,3),(4,'Farm2','Farm2',200.00,'2024-10-15','2027-10-15',7,2,3),(5,'Renewable1','Renewable1 desc',340.00,'2024-10-15','2027-10-15',7,2,2),(6,'Renewable2','Renewable2 desc',340.00,'2024-10-13','2027-10-13',7,2,3),(7,'Test status onsell','Test status onsell',200.00,'2024-10-26','2027-10-26',7,2,3),(8,'GreenLeaf Rubber Reserve','โครงการ GreenLeaf Rubber Reserve มีเป้าหมายเพื่อสร้างสวนยางพาราที่ยั่งยืนและเป็นมิตรต่อสิ่งแวดล้อม ด้วยการใช้เทคนิคการดักจับคาร์บอนที่ทันสมัยในการปลูกยางพารา เพื่อลดการปล่อยคาร์บอนสู่บรรยากาศและเพิ่มความหลากหลายทางชีวภาพในพื้นที่ ทำให้ฟาร์มนี้เป็นแหล่งสะสมคาร์บอนและมีส่วนช่วยในการลดภาวะโลกร้อน โดยการจัดการพื้นที่ปลูกอย่างมีประสิทธิภาพและใช้วิธีการเกษตรที่ลดผลกระทบต่อสิ่งแวดล้อม ฟาร์มนี้ยังมีเป้าหมายในการส่งเสริมความรู้และเพิ่มรายได้ให้เกษตรกรไทยในพื้นที่ชนบทอีกด้วย',15200.00,'2022-03-05','2027-09-04',7,1,3),(9,'EcoTropic Rubber Project','EcoTropic มุ่งหวังที่จะสร้างการผสมผสานระหว่างการทำฟาร์มยางพาราแบบยั่งยืนและการจัดการคาร์บอนที่เป็นมิตรต่อสิ่งแวดล้อม ส่งเสริมการเพาะปลูกที่ลดการปล่อยก๊าซเรือนกระจก และพัฒนาความรู้ให้แก่เกษตรกรเกี่ยวกับการลดผลกระทบต่อสิ่งแวดล้อมและการดูแลระบบนิเวศในพื้นที่',17500.00,'2023-01-10','2028-12-10',7,1,2),(10,'Green Horizon Rubber Farm','Green Horizon เป็นสวนยางพาราที่เน้นการลดผลกระทบต่อสิ่งแวดล้อมและการพัฒนาการดูแลดินที่ยั่งยืน เพื่อให้ต้นยางพาราเติบโตได้อย่างสมบูรณ์และมีประสิทธิภาพในการดักจับคาร์บอน ช่วยลดก๊าซเรือนกระจกและฟื้นฟูความอุดมสมบูรณ์ของพื้นที่เพาะปลูก',16000.00,'2022-04-01','2029-03-31',7,1,2),(11,'Thai GreenRubber Carbon Credit','โครงการนี้ช่วยให้เกษตรกรไทยสร้างมูลค่าเพิ่มจากการจัดการพื้นที่ปลูกยางพาราแบบยั่งยืน เพิ่มการดักจับคาร์บอนและเสริมสร้างความหลากหลายทางชีวภาพ รวมถึงสร้างแหล่งความรู้ในการปลูกยางพาราอย่างยั่งยืนสำหรับเกษตรกรในท้องถิ่น\r\n',18000.00,'2022-02-20','2028-02-19',7,1,2),(12,'CarbonConserve Rubber Project','CarbonConserve สนับสนุนการปลูกยางพาราที่คำนึงถึงการลดคาร์บอนโดยใช้วิธีการจัดการพื้นที่อย่างมีประสิทธิภาพ ทำให้เป็นโครงการที่ช่วยรักษาสิ่งแวดล้อมและส่งเสริมความรู้ให้เกษตรกรในการลดการปล่อยก๊าซเรือนกระจก',19000.00,'2023-05-15','2028-05-14',7,1,2),(13,'BioEco Rubber Initiative','โครงการนี้เน้นการปลูกยางพาราที่ไม่ทำลายธรรมชาติและใช้การจัดการที่ลดผลกระทบต่อสิ่งแวดล้อม ช่วยให้เกษตรกรสามารถลดการปล่อยคาร์บอนได้อย่างมีประสิทธิภาพ พร้อมเสริมสร้างความรู้และการดูแลพื้นที่ให้ยั่งยืน',14500.00,'2021-07-02','2026-07-01',7,1,2),(14,'Green Thai Rubber Initiative','Green Thai Rubber มุ่งหวังในการสร้างฟาร์มยางพาราที่เป็นมิตรต่อสิ่งแวดล้อม โดยใช้เทคนิคการปลูกที่ช่วยลดก๊าซเรือนกระจกและเพิ่มความยั่งยืนของพื้นที่ เป็นโครงการที่ช่วยรักษาธรรมชาติและส่งเสริมชุมชน',15300.00,'2022-08-18','2027-08-17',7,1,2),(15,'CarbonCare Rubber Plantation','CarbonCare มุ่งเน้นการใช้วิธีการปลูกที่เป็นมิตรต่อสิ่งแวดล้อม ลดการปล่อยคาร์บอนและรักษาความอุดมสมบูรณ์ของดิน โดยเกษตรกรจะได้รับการอบรมการจัดการพื้นที่ให้ยั่งยืนเพื่อเพิ่มการดูดซับคาร์บอนและพัฒนาคุณภาพชีวิตในชุมชน',16800.00,'2023-06-12','2028-06-11',7,1,2),(16,'EcoRubber Sustainable Initiative','EcoRubber เน้นการใช้พื้นที่สวนยางพาราให้เกิดประโยชน์สูงสุด โดยการใช้วิธีการเกษตรเชิงอนุรักษ์ที่ลดการปล่อยก๊าซเรือนกระจกและฟื้นฟูสภาพแวดล้อม โครงการนี้ยังเป็นตัวอย่างของการทำเกษตรแบบยั่งยืนและสร้างแหล่งรายได้ให้กับชุมชนในท้องถิ่น',18500.00,'2022-09-05','2029-09-04',7,1,2),(17,'Thai Rubber Green Impact','โครงการนี้ช่วยส่งเสริมการปลูกยางพาราอย่างยั่งยืนในชุมชนเกษตรกรไทย ลดผลกระทบต่อสิ่งแวดล้อมและสร้างพื้นที่ดักจับคาร์บอนที่มีประสิทธิภาพ โดยเน้นการใช้วิธีการเกษตรที่คำนึงถึงความหลากหลายทางชีวภาพ',17200.00,'2023-01-20','2030-01-19',7,1,2),(18,'PureCarbon Rubber Reserve','PureCarbon Rubber Reserve เป็นโครงการฟาร์มยางพาราที่ลดการปล่อยคาร์บอนอย่างมีประสิทธิภาพ ด้วยการใช้เทคนิคการดูแลดินและต้นยางที่ช่วยเพิ่มการกักเก็บคาร์บอนในพื้นที่ ฟื้นฟูคุณภาพดินและสนับสนุนชุมชนเกษตรกรให้เกิดความยั่งยืนในระยะยาว',15900.00,'2023-04-08','2028-04-07',7,1,2),(19,'GreenFuture Rubber Initiative','GreenFuture มุ่งเน้นการลดคาร์บอนในอุตสาหกรรมการเกษตรโดยการจัดการสวนยางพาราที่ไม่ทำลายธรรมชาติและสร้างรายได้ให้กับเกษตรกรในชุมชน โครงการนี้มีเป้าหมายในการเพิ่มประสิทธิภาพการดูดซับคาร์บอนและฟื้นฟูดินให้ยั่งยืน',18300.00,'2022-03-13','2027-03-12',7,1,2),(20,'ThaiNatural Rubber Project','โครงการนี้เป็นการรวมความรู้ด้านการปลูกยางพาราแบบยั่งยืนเข้ากับการจัดการที่เป็นมิตรต่อสิ่งแวดล้อม ช่วยเพิ่มพื้นที่ดักจับคาร์บอนและฟื้นฟูระบบนิเวศของพื้นที่เพาะปลูกโดยให้ความสำคัญกับการพัฒนาเศรษฐกิจในชุมชน',16700.00,'2021-08-07','2026-08-06',7,1,2),(21,'GreenWay Rubber Farm','GreenWay เน้นการใช้พื้นที่ยางพาราให้เกิดประโยชน์สูงสุดในการดักจับคาร์บอน ช่วยลดการปล่อยก๊าซเรือนกระจกและส่งเสริมความยั่งยืนในพื้นที่โดยสนับสนุนการพัฒนาเกษตรกรในท้องถิ่นให้มีคุณภาพชีวิตที่ดีขึ้น',19000.00,'2023-11-02','2028-11-01',7,1,2),(22,'EcoGrowth Rubber Reserve','EcoGrowth เน้นการปลูกยางพาราแบบยั่งยืนที่สามารถกักเก็บคาร์บอนได้อย่างมีประสิทธิภาพ พร้อมเสริมสร้างความอุดมสมบูรณ์ของดินและการสนับสนุนเศรษฐกิจของเกษตรกรในท้องถิ่น ช่วยสร้างคุณค่าที่ยั่งยืนทั้งด้านสิ่งแวดล้อมและสังคม',17800.00,'2022-05-14','2027-05-13',7,1,2),(23,'GreenPalm Carbon Offset','โครงการนี้มุ่งเน้นการปลูกปาล์มน้ำมันที่เป็นมิตรกับสิ่งแวดล้อม โดยใช้วิธีการลดการปล่อยคาร์บอนและเพิ่มประสิทธิภาพการดูดซับคาร์บอนภายในสวน ทำให้โครงการนี้สามารถสร้างรายได้จากคาร์บอนเครดิตและช่วยพัฒนาความยั่งยืนในพื้นที่เกษตรกร',14000.00,'2022-06-01','2027-06-30',7,2,2),(24,'EcoPalm Sustainable Initiative','EcoPalm Sustainable Initiative เป็นโครงการปลูกปาล์มน้ำมันที่เน้นการลดการปล่อยคาร์บอน โดยใช้เทคนิคการจัดการพื้นที่และการบำรุงรักษาที่ช่วยฟื้นฟูคุณภาพดินและเพิ่มการกักเก็บคาร์บอนในพื้นที่',15200.00,'2023-03-10','2028-03-09',7,2,2),(25,'PureGreen Palm Project','โครงการ PureGreen Palm มุ่งหวังที่จะสร้างสวนปาล์มน้ำมันที่ลดการปล่อยคาร์บอนอย่างยั่งยืน โดยใช้การจัดการพื้นที่ที่เน้นการฟื้นฟูธรรมชาติและเสริมสร้างความหลากหลายทางชีวภาพในพื้นที่',13800.00,'2022-11-01','2027-10-31',7,2,2),(26,'CarbonPalm Project','CarbonPalm เป็นโครงการปลูกปาล์มน้ำมันที่มุ่งเน้นการพัฒนาความยั่งยืน โดยการดูแลพื้นที่ปลูกอย่างมีประสิทธิภาพเพื่อเพิ่มการกักเก็บคาร์บอนและลดการปล่อยก๊าซเรือนกระจก',16500.00,'2023-02-20','2028-02-19',7,2,2),(27,'GreenPalm Earth Initiative','โครงการ GreenPalm Earth Initiative มุ่งเน้นการปลูกปาล์มที่ใช้วิธีการเกษตรยั่งยืน ลดการใช้สารเคมีและเพิ่มการกักเก็บคาร์บอนในพื้นที่เพาะปลูก เพื่อให้เกิดความยั่งยืนทางเศรษฐกิจและสิ่งแวดล้อม',14800.00,'2022-08-15','2027-08-14',7,2,2),(28,'Sustainable Palm Plantation','โครงการนี้เน้นการปลูกปาล์มที่คำนึงถึงความยั่งยืนและการลดผลกระทบต่อสิ่งแวดล้อม โดยการใช้วิธีการเพาะปลูกที่เน้นการกักเก็บคาร์บอนในดินและลดการปล่อยก๊าซเรือนกระจก',18200.00,'2023-01-10','2028-01-09',7,2,2),(29,'EcoPalm Green Project','EcoPalm Green เป็นโครงการสวนปาล์มน้ำมันที่เน้นการอนุรักษ์ธรรมชาติและสร้างพื้นที่ดูดซับคาร์บอนสูงสุด โดยใช้วิธีการเพาะปลูกที่เป็นมิตรต่อสิ่งแวดล้อมเพื่อให้เกิดความยั่งยืนทางด้านเศรษฐกิจและสิ่งแวดล้อมในชุมชน',19000.00,'2022-04-05','2027-04-04',7,2,2),(30,'CarbonNeutral Palm Initiative','โครงการนี้เน้นการปลูกปาล์มที่ไม่ทำลายธรรมชาติ โดยใช้วิธีการจัดการพื้นที่ที่เน้นการกักเก็บคาร์บอน ลดการใช้สารเคมีและการบำรุงรักษาแบบยั่งยืน',15600.00,'2021-06-07','2026-06-06',7,2,2),(31,'Thai Palm Carbon Offset','โครงการนี้มีเป้าหมายในการสร้างพื้นที่ปลูกปาล์มแบบยั่งยืน โดยลดการปล่อยคาร์บอนผ่านการจัดการพื้นที่ที่ดี ช่วยให้เกษตรกรไทยสามารถสร้างรายได้จากคาร์บอนเครดิตและรักษาสิ่งแวดล้อม',13500.00,'2022-12-12','2027-12-11',7,2,2),(32,'FuturePalm Carbon Project',' FuturePalm มุ่งเน้นการใช้วิธีการปลูกปาล์มที่เป็นมิตรต่อสิ่งแวดล้อม ลดการใช้ทรัพยากรและสารเคมี พร้อมเสริมสร้างความยั่งยืนในชุมชนผ่านการปลูกปาล์มคาร์บอน',17500.00,'2023-05-20','2028-05-19',7,2,2),(33,'GreenGrowth Palm Plantation','โครงการ GreenGrowth มุ่งเน้นการปลูกปาล์มน้ำมันที่ลดผลกระทบต่อสิ่งแวดล้อมและสร้างแหล่งดูดซับคาร์บอน โดยใช้วิธีการเพาะปลูกที่ลดการปล่อยก๊าซเรือนกระจกและเพิ่มความยั่งยืนในชุมชน ส่งเสริมการใช้ที่ดินที่ยั่งยืนและการดูแลรักษาพื้นที่ธรรมชาติ',18800.00,'2022-03-15','2027-03-14',7,2,2),(34,'PurePalm Eco Project','PurePalm Eco Project เน้นการพัฒนาสวนปาล์มน้ำมันที่มีการจัดการพื้นที่แบบยั่งยืน ลดการปล่อยก๊าซเรือนกระจกโดยใช้เทคนิคการดูแลดินที่ช่วยกักเก็บคาร์บอนในดินและเพิ่มความหลากหลายทางชีวภาพ ทำให้เกิดประโยชน์ทั้งต่อสิ่งแวดล้อมและชุมชนเกษตรกร',16200.00,'2023-04-10','2028-04-09',7,2,2),(35,'EcoSustain Palm Project','โครงการ EcoSustain ใช้แนวทางการปลูกปาล์มน้ำมันที่คำนึงถึงการอนุรักษ์สิ่งแวดล้อม ลดการใช้สารเคมีและพัฒนาให้สวนปาล์มน้ำมันเป็นแหล่งดูดซับคาร์บอนที่มีประสิทธิภาพ ช่วยให้เกิดความยั่งยืนและฟื้นฟูระบบนิเวศในพื้นที่เพาะปลูก',17300.00,'2022-02-25','2027-02-24',7,2,2),(36,'Thai Carbon Palm Project','โครงการนี้มุ่งเน้นการพัฒนาสวนปาล์มที่เป็นมิตรต่อสิ่งแวดล้อม ใช้เทคนิคการจัดการดินเพื่อเพิ่มการกักเก็บคาร์บอน ช่วยลดการปล่อยก๊าซเรือนกระจกและส่งเสริมให้เกษตรกรไทยมีรายได้เสริมจากคาร์บอนเครดิต',15700.00,'2022-08-18','2027-08-17',7,2,2),(37,'EarthPalm Green Impact','EarthPalm Green Impact มีเป้าหมายในการสร้างสวนปาล์มที่ลดการปล่อยคาร์บอนและฟื้นฟูความอุดมสมบูรณ์ของดิน ใช้การเพาะปลูกที่ยั่งยืนเพื่อเพิ่มการกักเก็บคาร์บอนและลดผลกระทบต่อสิ่งแวดล้อม ทำให้เกษตรกรสามารถผลิตปาล์มน้ำมันแบบคาร์บอนต่ำได้อย่างมีประสิทธิภาพ',19200.00,'2023-09-02','2028-09-01',7,2,2),(38,'Try','Try',111.00,'2024-10-31','2027-10-31',4,1,3),(39,'Test','ees',123.00,'2024-11-02','2027-11-02',7,3,2);
+/*!40000 ALTER TABLE `projects` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `transactions`
+--
+
+DROP TABLE IF EXISTS `transactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `transactions` (
+  `transaction_id` int NOT NULL AUTO_INCREMENT,
+  `buyer_id` int DEFAULT NULL,
+  `seller_id` int DEFAULT NULL,
+  `transaction_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `amount` decimal(10,2) NOT NULL,
+  `status` enum('completed','pending') DEFAULT 'pending',
+  PRIMARY KEY (`transaction_id`),
+  KEY `buyer_id` (`buyer_id`),
+  KEY `seller_id` (`seller_id`),
+  CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`buyer_id`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`seller_id`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transactions`
+--
+
+LOCK TABLES `transactions` WRITE;
+/*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+INSERT INTO `transactions` VALUES (9,4,NULL,'2024-10-26 11:16:50',340.00,'pending'),(11,7,NULL,'2024-10-31 08:45:54',540.00,'pending'),(12,7,NULL,'2024-11-01 13:49:55',200.00,'pending'),(13,7,NULL,'2024-11-01 14:20:18',211.00,'pending'),(14,7,NULL,'2024-11-02 05:26:34',15200.00,'pending');
+/*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_roles`
+--
+
+DROP TABLE IF EXISTS `user_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_roles` (
+  `user_role_id` int NOT NULL AUTO_INCREMENT,
+  `role` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`user_role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+LOCK TABLES `user_roles` WRITE;
+/*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
+INSERT INTO `user_roles` VALUES (1,'admin'),(2,'user');
+/*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `role` int DEFAULT '2',
+  PRIMARY KEY (`user_id`),
+  KEY `users_ibfk_1` (`role`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role`) REFERENCES `user_roles` (`user_role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'john_doe','john@example.com','password123','2024-10-01 06:13:54',2),(2,'jane_smith','jane@example.com','password456','2024-10-01 06:13:54',2),(3,'alex_brown','alex@example.com','password789','2024-10-01 06:13:54',2),(4,'test4','test4@gmail.com','$2b$10$.CIZSx.81mFDFzBJqHR61uWJOMr1GfkfrVpnyKFrp2a2RdI.kjqWS','2024-10-01 06:20:55',1),(5,'test5','test5@gmail.com','$2b$10$c0EX4rrYxIVe0fCHbOBAZ.x7cc/9nQYJe3cnPLdzHFh79wO/Q0ndq','2024-10-01 07:06:58',2),(6,'dragonfore4','65050870@kmitl.ac.th','$2b$10$zI.seKLQHywZlyKJ7ghnAOVDQT3iK/Hlk4KE87dXvN40l/AekQSZS','2024-10-11 11:59:54',2),(7,'admin','admin@gmail.com','$2b$10$tc9jg4LH4BSt1./JZuh6KefGKQMArt2Wu54hNyTZGbf4DLbMhNDDa','2024-10-14 07:16:47',NULL),(9,'test8','test8@gmail.com','$2b$10$nSf4MF67lkx8hn1NNNiP4epTQcUCTR6iC1rfS6tYQx3RXFAcARl32','2024-10-15 10:37:22',2),(10,'garai','sdfdsf','$2b$10$rwHIjdrfKLHcDL.syQNh8ewOcpWJheNbBJy3LHjYXMsrxHwdWpPF2','2024-10-15 12:22:35',2);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-11-06 18:28:24
