@@ -1,5 +1,5 @@
 const express = require("express");
-require("dotenv").config({path: ".env.local"});
+require("dotenv").config({ path: ".env.local" });
 
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -8,7 +8,7 @@ const path = require("path")
 
 const { connectMG } = require("./config/db")
 
-const { readdirSync}  = require("fs")
+const { readdirSync } = require("fs")
 
 const app = express();
 
@@ -22,7 +22,7 @@ const corsOptions = {
             process.env.FRONTENDURL, // Your Vercel frontend URL
             'http://localhost:3000', // Localhost for development
         ];
-        
+
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
@@ -42,7 +42,7 @@ app.use(bodyParser.json())
 
 const files = readdirSync("./Routes")
 files.forEach(f => {
-    app.use("/api", require("./Routes/"+f));
+    app.use("/api", require("./Routes/" + f));
 })
 
 
