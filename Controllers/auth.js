@@ -168,3 +168,52 @@ exports.getUserIdByUsername = async (req, res) => {
     }
 }
 
+exports.getToken = async (req, res) => {
+    const token = req.cookies.token; // Retrieve token from cookies
+    if (!token) {
+        return res.status(200).json({ message: "No token found" });
+    }
+
+    try {
+        return res.status(200).json({ token: token }); // Return token as an object
+    } catch (err) {
+        console.error("Token retrieval failed:", err);
+        return res.status(500).json({ message: "Server error" });
+    }
+};
+
+
+exports.decodeToken = async (req, res) => {
+    const token = req.cookies.token;
+    console.log(req.cookies.token)
+
+    if (!token) {
+        return res.status(200).json({ message: "No token found" });
+    }
+
+    try {
+        const decodeToken = jwt.verify(token, secretKey);
+        return res.status(200).json(decodeToken);
+    } catch (err) {
+        console.error("Token verification failed:", err);
+        return res.status(401).json({ message: "Invalid token" });
+    }
+};
+
+exports.deleteToken = async (req, res) => {
+    const token = req.cookies.token; // Retrieve token from cookies
+    console.log(token)
+
+    if (!token) {
+        return res.status(200).json({ message: "No token found" });
+    }
+
+    try {
+        // Verify the token
+        // return res.status(200).json({ authenticated: true, user: decoded });
+        return res.clearCookie("token").status(200).json({ message: "Token deleted" });
+    } catch (err) {
+        // return res.status(401).json({ authenticated: false, message: "Invalid token" });
+        return res.status(500).json({ message: "Internal server error" });
+    }
+};

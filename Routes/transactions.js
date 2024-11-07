@@ -9,6 +9,4 @@ router.post("/checkout" , checkOut );
 router.get("/transaction/:id", getTransaction);
 router.get("/transactions", listTransactions);
 
-
-
 module.exports = router;

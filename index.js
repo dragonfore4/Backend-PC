@@ -40,10 +40,20 @@ app.use(bodyParser.json())
 
 // app.use(express.static(path.join(__dirname, "uploads")))
 
-const files = readdirSync("./Routes")
+const files = readdirSync("./Routes");
 files.forEach(f => {
-    app.use("/api", require("./Routes/" + f));
-})
+    try {
+        const route = require("./Routes/" + f);
+        if (route) {
+            app.use("/api", route);
+        } else {
+            console.error(`Error: Route in file ${f} is undefined.`);
+        }
+    } catch (error) {
+        console.error(`Failed to load route from file: ${f}`, error);
+    }
+});
+
 
 
 const port = 5000;
