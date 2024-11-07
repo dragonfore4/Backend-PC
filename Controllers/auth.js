@@ -38,11 +38,18 @@ exports.login = async (req, res) => {
             // Set the JWT as a cookie
             res.cookie("token", token, {
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production', // true in production, false locally
-                // sameSite: "strict",
-                sameSite: "none",
+                secure: process.env.NODE_ENV === 'production', // true in production for HTTPS
+                sameSite: "none", // Allows cross-origin cookies
                 maxAge: 4 * 60 * 60 * 1000, // 4 hours
+                domain: process.env.FRONTEND_DOMAIN// Use this specific domain for Vercel
             });
+            // res.cookie("token", token, {
+            //     httpOnly: true,
+            //     secure: process.env.NODE_ENV === 'production', // true in production for HTTPS
+            //     sameSite: "none", // Allows cross-origin cookies
+            //     maxAge: 4 * 60 * 60 * 1000, // 4 hours
+            // });
+            
             
 
             console.log("Cookie set:", token); // Log to check if cookie is set on server
