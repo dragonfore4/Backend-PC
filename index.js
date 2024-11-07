@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config({ path: ".env.local" });
 
 const bodyParser = require("body-parser");
+const cookiePaser = require("cookie-parser");
 const cors = require("cors");
 const morgan = require("morgan");
 const path = require("path")
@@ -37,6 +38,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(morgan("dev"))
 app.use(bodyParser.json())
+app.use(cookiePaser())
 
 // app.use(express.static(path.join(__dirname, "uploads")))
 
