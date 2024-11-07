@@ -211,7 +211,12 @@ exports.deleteToken = async (req, res) => {
     try {
         // Verify the token
         // return res.status(200).json({ authenticated: true, user: decoded });
-        return res.clearCookie("token").status(200).json({ message: "Token deleted" });
+        return res.clearCookie("token",{
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // true in production for HTTPS
+            sameSite: "none", // Allows cross-origin cookies
+            maxAge: 0, // 4 hours
+        }).status(200).json({ message: "Token deleted" });
     } catch (err) {
         // return res.status(401).json({ authenticated: false, message: "Invalid token" });
         return res.status(500).json({ message: "Internal server error" });
