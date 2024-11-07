@@ -127,7 +127,7 @@ exports.getCartIdByUsername = async (req, res) => {
         
         try {
             // Query to get the user_id from the username
-            const [user] = await connection.query("SELECT user_id FROM users WHERE username = ?", [username]);
+            const [user] = await connection.query("SELECT user_id FROM user WHERE username = ?", [username]);
             if (user.length === 0) {
                 return res.status(404).json({ message: "User not found" });
             }

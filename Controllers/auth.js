@@ -15,7 +15,7 @@ exports.login = async (req, res) => {
         const connection = await pool.getConnection();
         try {
             const [rows] = await connection.query(
-                // "SELECT * FROM USERS WHERE username = ?",
+                // "SELECT * FROM use WHERE username = ?",
                 "SELECT * FROM users WHERE username = ?",
                 [username]
             );
@@ -79,11 +79,11 @@ exports.register = async (req, res) => {
         try {
             // Check if the username or email already exists
             const [rowsUsername] = await connection.query(
-                "SELECT username FROM USERS WHERE username = ?",
+                "SELECT username FROM users WHERE username = ?",
                 [username]
             );
             const [rowsEmail] = await connection.query(
-                "SELECT email FROM USERS WHERE email = ?",
+                "SELECT email FROM user WHERE email = ?",
                 [email]
             );
 
@@ -134,7 +134,7 @@ exports.user = async (req, res) => {
     try {
         const connection = await pool.getConnection();
         try {
-            const [results] = await connection.query("SELECT * FROM USERS");
+            const [results] = await connection.query("SELECT * FROM users");
             res.status(200).json({ users: results });
         } finally {
             connection.release();
@@ -153,7 +153,7 @@ exports.getUserIdByUsername = async (req, res) => {
         const username = req.body.username;
         const connection = await pool.getConnection();
         try {
-            const [result] = await connection.query("SELECT user_id FROM USERS WHERE USERNAME = ?", [username]);
+            const [result] = await connection.query("SELECT user_id FROM user WHERE USERNAME = ?", [username]);
             // console.log(result)
             res.status(200).json(result);
         } finally {

@@ -8,7 +8,7 @@ exports.checkOut = async (req, res) => {
         try {
             await connection.beginTransaction();
             // 0.) Get buyer_id from buyer_name
-            const [buyer_id_result] = await connection.query("SELECT user_id FROM users WHERE username = ?",
+            const [buyer_id_result] = await connection.query("SELECT user_id FROM user WHERE username = ?",
                 [buyer_name]
             )
 
