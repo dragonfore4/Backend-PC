@@ -41,7 +41,7 @@ exports.login = async (req, res) => {
                 secure: process.env.NODE_ENV === 'production', // true in production for HTTPS
                 sameSite: "none", // Allows cross-origin cookies
                 maxAge: 4 * 60 * 60 * 1000, // 4 hours
-                domain: process.env.FRONTEND_DOMAIN// Use this specific domain for Vercel
+                // domain: process.env.FRONTEND_DOMAIN// Use this specific domain for Vercel
             });
             // res.cookie("token", token, {
             //     httpOnly: true,
