@@ -15,7 +15,11 @@ const pool = mysql.createPool({
     user : process.env.DB_USER || 'root',
     password : process.env.DB_PASSWORD || '1234',
     database : process.env.DB_NAME || 'carbon_credit_db',
-    port: process.env.DB_PORT || 3306
+    port: process.env.DB_PORT || 3306,
+    ssl: {
+        rejectUnauthorized: true
+
+    }
 })
 
 
