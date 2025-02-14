@@ -1,4 +1,3 @@
-const { connection } = require("mongoose");
 const { pool } = require("../config/db")
 
 exports.list = async (req, res) => {

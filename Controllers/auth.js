@@ -15,7 +15,6 @@ exports.login = async (req, res) => {
         const connection = await pool.getConnection();
         try {
             const [rows] = await connection.query(
-                // "SELECT * FROM use WHERE username = ?",
                 "SELECT * FROM users WHERE username = ?",
                 [username]
             );
@@ -43,16 +42,7 @@ exports.login = async (req, res) => {
                 maxAge: 4 * 60 * 60 * 1000, // 4 hours
                 // domain: process.env.FRONTEND_DOMAIN// Use this specific domain for Vercel
             });
-            // res.cookie("token", token, {
-            //     httpOnly: true,
-            //     secure: process.env.NODE_ENV === 'production', // true in production for HTTPS
-            //     sameSite: "none", // Allows cross-origin cookies
-            //     maxAge: 4 * 60 * 60 * 1000, // 4 hours
-            // });
-            
-            
-
-            console.log("Cookie set:", token); // Log to check if cookie is set on server
+            // console.log("Cookie set:", token); // Log to check if cookie is set on server
 
             return res.status(200).json({
                 message: "Login successful",

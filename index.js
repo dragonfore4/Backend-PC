@@ -1,65 +1,47 @@
-const express = require("express");
 require("dotenv").config({ path: ".env.local" });
-
+const express = require("express");
 const bodyParser = require("body-parser");
-const cookiePaser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const morgan = require("morgan");
-const path = require("path")
-
-const { connectMG } = require("./config/db")
-
-const { readdirSync } = require("fs")
+const { readdirSync } = require("fs");
+const { connectMG } = require("./config/db");
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// start mongodb
+// Start MongoDB connection
 // connectMG();
 
-app.use(bodyParser.urlencoded({ extended: false }))
-const corsOptions = {
-    origin: (origin, callback) => {
-        const allowedOrigins = [
-            process.env.FRONTENDURL, // Your Vercel frontend URL
-            'http://localhost:3000', // Localhost for development
-        ];
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(morgan("dev"));
 
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+// CORS Configuration
+const corsOptions = {
+    origin: [
+        process.env.FRONTEND_URL, // Your Vercel frontend URL
+        "http://localhost:3000", // Localhost for development
+    ],
     credentials: true,
 };
-
-
-// Apply CORS middleware to all routes
 app.use(cors(corsOptions));
-app.use(morgan("dev"))
-app.use(bodyParser.json())
-app.use(cookiePaser())
 
-// app.use(express.static(path.join(__dirname, "uploads")))
-
-const files = readdirSync("./Routes");
-files.forEach(f => {
+// Load and apply routes dynamically
+readdirSync("./Routes").forEach((file) => {
     try {
-        const route = require("./Routes/" + f);
+        const route = require(`./Routes/${file}`);
         if (route) {
             app.use("/api", route);
         } else {
-            console.error(`Error: Route in file ${f} is undefined.`);
+            console.error(`Error: Route in file ${file} is undefined.`);
         }
     } catch (error) {
-        console.error(`Failed to load route from file: ${f}`, error);
+        console.error(`Failed to load route from file: ${file}`, error);
     }
 });
 
-
-
-const port = 5000;
-
-app.listen(port, () => {
-    console.log(`Server running in port ${port}`)
-})
+// Start server
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
